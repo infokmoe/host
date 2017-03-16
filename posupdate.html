@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Random Posts</title>
+<title>Artikel Diperbaharui</title>
 <meta content='width=device-width, initial-scale=1' name='viewport'>
 <style>
 body {
@@ -12,8 +12,23 @@ body {
   overflow:hidden;
 }
 iframe{border:0;}
-li.update { list-style: none; height:60px; overflow:hidden } .imgupdate { float:left; margin:5px 10px 0 5px } .tgl-com { display:block; font-size:90% }
-</style>
+#updated-posts {
+    background: #222;
+    color: #808080;
+}li.update a {
+    color: #e8554e;
+    text-decoration: none;
+    font-weight: 300;
+}
+li.update {
+    height: 60px;
+    overflow: hidden;
+    list-style: none;
+    border-bottom: 1px solid #3a3a3a;
+    padding: 0;
+    border-top: 1px solid #030303;
+}
+  </style>
 </head>
 <body>
 <ol id="updated-posts"></ol>
