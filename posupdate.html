@@ -17,6 +17,7 @@ li.update { list-style: none; height:60px; overflow:hidden } .imgupdate { float:
 </head>
 <body>
 <ol id="updated-posts"></ol>
+  <script>
 // Pengembangan dari http://www.dte.web.id/2012/01/basic-json-feeds-for-blogger.html // Widget Daftar Posting Diperbaharui // Nodified : yOu w4hyOu // https://plus.google.com/106933633716411881896/about // http://info-kmu.blogspot.com/ 
 function updatedPosts(a) {
   if (document.getElementById("updated-posts")) {
@@ -52,7 +53,7 @@ function getScript(url) {
   document.body.appendChild(s)
 }
 getScript("//info-kmu.blogspot.co.id/feeds/posts/summary?alt=json-in-script&orderby=updated&max-results=7&callback=updatedPosts");
-
+ </script>
 
 </body>
 </html>
