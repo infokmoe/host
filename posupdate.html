@@ -14,7 +14,7 @@ body {
 iframe{border:0;}
 #updated-posts {
     background: #222;
-    color: #808080;
+    color: #808080; width: 280px;
 }li.update a {
     color: #e8554e;
     text-decoration: none;
@@ -61,7 +61,7 @@ function updatedPosts(a) {
         img = "https://2.bp.blogspot.com/-LQV025ltHWI/UnZSnJQN_GI/AAAAAAAAGes/gbXNGWA21LY/s40/logon.png"
       }
       content += '<li class="update"><img src="' + img.replace(/\/s72-c/, "/s40-c") + '" class="imgupdate" alt="thumb" height="40px" width="40px"/>';
-      content += '<strong><a href="' + link + '" target="_blank">' + title + '</a></strong><span class="tgl-com"> diposkan pada ' + date + "</span></li>";
+      content += '<strong><a href="' + link + '" target="_blank">' + title + '</a></strong><span class="tgl-com"> Dipublikasikan ' + date + "</span></li>";
     }
     ct.innerHTML = content
   }
