@@ -23,8 +23,16 @@ function getQueryVariable(variable) {
 	}
 	return(false);
 }
-var domain = getQueryVariable("url");
-var labels = getQueryVariable("label");
+var labelArray = [],
+    relatedPostConfig = {
+		homePage: getQueryVariable("url"),
+     numPosts: 10,
+    titleLength: "auto",
+    containerId: "related-post",
+    newTabLink:true,
+	    
+        widgetStyle: 1,
+        callBack: function() {}};
 </script>
 </head>
 <body>
