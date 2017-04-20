@@ -24,10 +24,6 @@ function getQueryVariable(variable) {
 	return(false);
 }
 var domain = getQueryVariable("url");
-var colorlink = getQueryVariable("color");
-var colorback = getQueryVariable("back");
-var desc = getQueryVariable("item");
-var styles = getQueryVariable("style");
 var labels = getQueryVariable("label");
 </script>
 </head>
@@ -49,7 +45,7 @@ var labels = getQueryVariable("label");
 </style>
 <script>
     //<![CDATA[
-    var homePage = "//info-kmu.blogspot.com/",
+    var homePage = getQueryVariable("url"),
         numPosts = 5
         //]]>
 </script>
