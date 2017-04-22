@@ -23,69 +23,103 @@ function getQueryVariable(variable) {
 	}
 	return(false);
 }
-var labelArray = [],
-    relatedPostConfig = {
-		homePage: getQueryVariable("url"),
-     numPosts: 10,
-    titleLength: "auto",
-    containerId: "related-post",
-    newTabLink:true,
-	    
-        widgetStyle: 1,
-        callBack: function() {}};
 </script>
 </head>
 <body>
-<ol id="recent-posts"></ol>
-<style>
-    .recent-posts a {
-        text-decoration:none;
-        overflow:hidden
-    }
-    .recent-posts a:hover {
-        color:orange;
-        text-decoration:underline;
-    }
-    .author {
-        display:block;
-        opacity: 0.7;
-    }
-</style>
-<script>
-    //<![CDATA[
-    var homePage = getQueryVariable("url"),
-        numPosts = 5
-        //]]>
+<b:if cond='data:blog.pageType == &quot;item&quot;'>
+    <div id='related-post' class='related-posts' />
+    <script type='text/javascript'>
+    var labelArray = [
+<b:if cond='data:post.labels'>
+    <b:loop values='data:post.labels' var='label'>&quot;
+        <data:label.name/>&quot;
+        <b:if cond='data:label.isLast != &quot;true&quot;'>,</b:if>
+    </b:loop>
+</b:if>];
+    var relatedPostConfig={homePage: "<data:blog.homepageurl/>",
+    widgetTitle:"<h4>Artikel Terkait</h4>",
+    numPosts: 10,
+    titleLength: "auto",
+    containerId: "related-post",
+    newTabLink:true,
+    widgetStyle:1};
 </script>
-<script>
-// Recent Post widget for Blogger
-// Author: yOu w4hyOu 
-// https://plus.google.com/106933633716411881896/about dibawah ini adalah isi script dari http://my-p4bk.googlecode.com/svn/hosting/js/reader/Posting%20Terbaru.js
-function recentPosts(a) {
-    if (document.getElementById("recent-posts")) {
-        var e = a.feed.entry,
-            title, link, content = "",
-            ct = document.getElementById("recent-posts");
-        for (var i = 0; i < numPosts; i++) {
-            for (var j = 0; j < numPosts; j++) {
-                if (e[i].link[j].rel == "alternate") {
-                    link = e[i].link[j].href;
-                    break
-                }
-            }
-            var title = e[i].title.$t,
-                postAuthor = e[i].author[0].name.$t,
-                pd = e[i].published.$t.substring(0, 10).split("-"),
-                o = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
-            content += '<li class="recent-posts"><strong><a href="' + link + '" title="' + title + '" target="_blank">' + title + '</a></strong>';
-            content += '<span class="author"><time datetime=' + pd.join("-") + '>' + (pd[2] + " " + o[(parseInt(pd[1], 10) - 1)] + " " + pd[0]) + '</time> | <span>' + postAuthor + '</span></span></li>'
+   <script type='text/javascript'>
+  //<![CDATA[
+  /*! Creator JS Related Post Widget for Blogger by Taufik Nurrohman => http://gplus.to/tovic */
+  /*! Telah dimodifikasi oleh you w4hyou => http://info-kmu.blogspot.com/ */
+  var randomRelatedIndex, showRelatedPost;
+(function(e, t, n) {
+  var r = {
+    widgetTitle: "<h4>Artikel Terkait:</h4>",
+    homePage: getQueryVariable("url"),
+    numPosts: 7,
+    titleLength: "auto",
+    callBack: function() {}
+  };
+  for (var i in relatedPostConfig) {
+    r[i] = relatedPostConfig[i] == "undefined" ? r[i] : relatedPostConfig[i]
+  }
+  var s = function(e) {
+      var r = t.createElement("script");
+      r.type = "text/javascript";
+      r.src = e;
+      n.appendChild(r)
+    },
+    o = function(e, t) {
+      return Math.floor(Math.random() * (t - e + 1)) + e
+    },
+    u = function(e) {
+      var t = e.length,
+        n, r;
+      if (t === 0) {
+        return false
+      }
+      while (--t) {
+        n = Math.floor(Math.random() * (t + 1));
+        r = e[t];
+        e[t] = e[n];
+        e[n] = r
+      }
+      return e
+    },
+    a = typeof labelArray == "object" && labelArray.length > 0 ? "/-/" + u(labelArray)[0] : "",
+    f = function(e) {
+      var t = e.feed.openSearch$totalResults.$t - r.numPosts,
+        n = o(1, t > 0 ? t : 1);
+      s(r.homePage.replace(/\/$/, "") + "/feeds/posts/summary" + a + "?alt=json-in-script&orderby=updated&start-index=" + n + "&max-results=" + r.numPosts + "&callback=showRelatedPost")
+    },
+    l = function(e) {
+      var t = document.getElementById(r.containerId),
+        n = u(e.feed.entry),
+        i = r.widgetStyle,
+        s = r.widgetTitle + "<ul>",
+        o = r.newTabLink ? ' target="_blank"' : "",
+        a = '<span style="display:block;clear:both;"></span>',
+        f, l, c, h, p;
+      if (!t) {
+        return
+      }
+      for (var v = 0; v < r.numPosts; v++) {
+        if (v == n.length) {
+          break
         }
-        ct.innerHTML = content
-    }
-}
-var you_script = document.createElement('script');
-you_script.src = homePage + '/feeds/posts/summary?alt=json-in-script&orderby=published&max-results=' + numPosts + '&callback=recentPosts';
-document.getElementsByTagName('head')[0].appendChild(you_script);</script>
-
+        l = n[v].title.$t;
+        c = r.titleLength !== "auto" && r.titleLength < l.length ? l.substring(0, r.titleLength) + "&hellip;" : l;
+        for (var m = 0, g = n[v].link.length; m < g; m++) {
+          f = n[v].link[m].rel == "alternate" ? n[v].link[m].href : "#"
+        }
+        s += '<li><a title="' + l + '" href="' + f + '"' + o + ">" + c + "</a></li>"
+      }
+      t.innerHTML = s += "</ul>" + a;
+      r.callBack()
+    };
+  randomRelatedIndex = f;
+  showRelatedPost = l;
+  s(r.homePage.replace(/\/$/, "") + "/feeds/posts/summary" + a + "?alt=json-in-script&orderby=updated&max-results=0&callback=randomRelatedIndex")
+})(window, document, document.getElementsByTagName("head")[0])
+//]]>
+</script>
+</b:if>
 </body>
 </html>
