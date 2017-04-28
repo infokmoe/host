@@ -29,20 +29,20 @@ function getQueryVariable(variable) {
 <b:if cond='data:blog.pageType == &quot;item&quot;'>
     <div id='related-post' class='related-posts' />
     <script type='text/javascript'>
-    var labelArray = [
-<b:if cond='data:post.labels'>
-    <b:loop values='data:post.labels' var='label'>&quot;
-        <data:label.name/>&quot;
-        <b:if cond='data:label.isLast != &quot;true&quot;'>,</b:if>
-    </b:loop>
-</b:if>];
-    var relatedPostConfig={homePage: "getQueryVariable("url")",
+    var relatedPostConfig={homePage: getQueryVariable("url"),
     widgetTitle:"<h4>Artikel Terkait</h4>",
     numPosts: 10,
     titleLength: "auto",
     containerId: "related-post",
     newTabLink:true,
     widgetStyle:1};
+	        var labelArray = [
+<b:if cond='data:post.labels'>
+    <b:loop values='data:post.labels' var='label'>&quot;
+        <data:label.name/>&quot;
+        <b:if cond='data:label.isLast != &quot;true&quot;'>,</b:if>
+    </b:loop>
+</b:if>];
 </script>
    <script type='text/javascript'>
   //<![CDATA[
