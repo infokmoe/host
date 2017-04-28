@@ -36,7 +36,7 @@ function getQueryVariable(variable) {
         <b:if cond='data:label.isLast != &quot;true&quot;'>,</b:if>
     </b:loop>
 </b:if>];
-    var relatedPostConfig={homePage: "<data:blog.homepageurl/>",
+    var relatedPostConfig={homePage: "getQueryVariable("url")",
     widgetTitle:"<h4>Artikel Terkait</h4>",
     numPosts: 10,
     titleLength: "auto",
