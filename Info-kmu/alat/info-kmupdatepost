@@ -90,9 +90,10 @@ function updatedPosts(a) {
 }
 
 var you_script = document.createElement('script');
-you_script.src = homePage + '/feeds/posts/summary?alt=json-in-script&orderby=published&max-results=999&callback=randomPosts';
+you_script.src = homePage+'/feeds/posts/summary?alt=json-in-script&orderby=updated&max-results=7&callback=updatedPosts';
 document.getElementsByTagName('head')[0].appendChild(you_script);
  </script>
+ 
 
 </body>
 </html>
