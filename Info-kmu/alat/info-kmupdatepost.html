@@ -14,10 +14,10 @@ body {
 }
  iframe{border:0;}
 #updated-posts {
-    background: #222;
+    background: #fff;
     color: #808080; width: 280px;
 }li.update a {
-    color: #e8554e;
+    color: #2196F3;
     text-decoration: none;
     font-weight: 300;font-family:'Roboto'; font-size: 13px;
 }
@@ -25,9 +25,9 @@ li.update {
     height: 60px;
     overflow: hidden;
     list-style: none;
-border-bottom: 1px solid #0f0f0f;
+    border-bottom: 1px solid #e6e6e6;
     padding: 0;
-    border-top: 1px solid #444040;
+    border-top: 1px solid #fdfdfd;
 }
   .imgupdate { float:left; margin:5px 10px 0 5px } 
   .tgl-com { display:block;font-size: 11px;
@@ -79,7 +79,7 @@ function updatedPosts(a) {
             if ("media$thumbnail" in e[i]) {
                 img = e[i].media$thumbnail.url
             } else {
-                img = "http://2.bp.blogspot.com/-LQV025ltHWI/UnZSnJQN_GI/AAAAAAAAGes/gbXNGWA21LY/s40/logon.png"
+                img = "https://2.bp.blogspot.com/-UqZAzvrQxfo/WQa6cs7hA7I/AAAAAAAAMgk/LUJhBACQTd4pb2MLR7RmKJJShX4uFfKEwCLcB/s40/images%2B%25281%2529.jpg"
             }
             content += '<li class="update"><img src="' + img.replace(/\/s72-c/, "/s40-c") + '" class="imgupdate" alt="thumb" height="40px" width="40px"/>';
             content += '<strong><a href="' + link + '" target="_blank">' + title + '</a></strong><span class="tgl-com"> diposkan pada ' + date + "</span></li>";
@@ -93,6 +93,6 @@ document.getElementsByTagName('head')[0].appendChild(you_script);
 
 
  </script>
-
+	<p>By <a href="//info-kmu.blogspot.com">Info [K-moe]</a></p>
 </body>
 </html>
