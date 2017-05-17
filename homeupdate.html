@@ -62,7 +62,7 @@ function updatedPosts(a) {
       var title = e[i].title.$t,
         pd = e[i].published.$t.substring(0, 10),
         date = pd.replace(/-/g, "/");
-            content += '<li class="update"><strong><a href="' + link + '" target="_blank">' + title + '</a></strong></li>";
+            content += '<li class="update"><strong><a href="' + link + '" target="_blank">' + title + '</a></strong></li>';
     }
     ct.innerHTML = content
   }
