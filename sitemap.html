@@ -74,18 +74,6 @@ iframe{border:0;}
     padding: 0 0 0 10px;font-size: 12px;
 }
 </style>
-<script>
-function getQueryVariable(variable) {
-	var query = window.location.search.substring(1);
-	var vars = query.split("&");
-	for (var i=0;i<vars.length;i++) {
-		var pair = vars[i].split("=");
-		if(pair[0] == variable){return pair[1];}
-	}
-	return(false);
-}
-var domain = getQueryVariable("url");
-</script>
 </head>
 <body>
 <div class="you_toc-outer" id="you_toc-outer"><table border="0"><tbody><tr><td><label for="you_toc-feed-order">Urutkan artikel berdasarkan:</label></td><td><select class="you_toc-feed-order" id="you_toc-feed-order"><option selected="" value="published">Artikel Terbaru</option><option value="updated">Artikel Diperbaharui</option></select></td></tr><tr><td><label for="you_toc-label-sorter">Filter artikel berdasarkan kategori:</label></td><td><select class="you_toc-label-sorter" disabled="" id="you_toc-label-sorter"><option selected="">Memuat...</option></select></td></tr><tr><td><label for="you_toc-feed-searcher-text">Cari dengan kata kunci:</label></td><td><form class="you_toc-feed-searcher" id="you_toc-feed-searcher"><input type="text" class="you_toc-feed-searcher-text" id="you_toc-feed-searcher-text" autocomplete="off"></form></td></tr>
